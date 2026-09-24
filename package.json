@@ -1,0 +1,19 @@
+{
+  "name": "ai-faq-assistant-api",
+  "version": "1.0.0",
+  "description": "Training backend structure for AI FAQ Assistant",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "dependencies": {
+    "@google/genai": "latest",
+    "bcrypt": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "jsonwebtoken": "latest",
+    "mongoose": "latest"
+  }
+}

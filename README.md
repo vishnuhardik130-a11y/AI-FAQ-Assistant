@@ -1,10 +1,21 @@
-AI FAQ Assistant - Training Project Folder
+# AI FAQ Assistant API - Server Setup
 
-This folder is the project-folder setup for the AI FAQ Assistant training project.
+Training project folder created according to the SERVER SETUP task.
 
-Structure:
-AI_FAQ_Assistant_Training_Project/
+## Commands
+
+npm init -y
+
+npm install express mongoose dotenv cors jsonwebtoken bcrypt @google/genai
+
+## Structure
+
+ai-faq-assistant-api/
+├── .env
+├── package.json
 └── src/
+    ├── app.js
+    ├── server.js
     ├── config/
     │   └── db.js
     ├── controllers/
@@ -16,21 +27,11 @@ AI_FAQ_Assistant_Training_Project/
     ├── routes/
     │   ├── authRoutes.js
     │   └── faqRoutes.js
-    └── views/
-        ├── partials/
-        │   ├── header.ejs
-        │   └── footer.ejs
-        ├── home.ejs
-        ├── login.ejs
-        ├── register.ejs
-        ├── dashboard.ejs
-        ├── faq.ejs
-        └── chat.ejs
-├── public/
-│   ├── css/style.css
-│   ├── js/script.js
-│   └── images/
-├── .env
-├── app.js
-├── package.json
-└── README.md
+    ├── middleware/
+    │   ├── authMiddleware.js
+    │   └── errorMiddleware.js
+    └── utils/
+        ├── tokenUtils.js
+        └── aiHelper.js
+
+This is a training/server-setup project. The files provide the requested structure and starter placeholders.
