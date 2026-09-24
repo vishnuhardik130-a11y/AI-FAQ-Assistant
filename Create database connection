@@ -1,0 +1,30 @@
+// Database Connection File (config/db.js)
+//
+// .env file (root folder) la MongoDB connection string add pannunga:
+//   MONGO_URI=mongodb://127.0.0.1:27017/ai_faq_assistant
+
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+
+dotenv.config();
+
+// 127.0.0.1  -> localhost (database unga machine la run aagudhu)
+// 27017      -> MongoDB default port
+// ai_faq_assistant -> database name (data insert pannumbodhu MongoDB thaanave create pannum)
+const uri =
+  process.env.MONGO_URI ||
+  process.env.DB ||
+  'mongodb://127.0.0.1:27017/ai_faq_assistant';
+
+async function connectDB() {
+  try {
+    await mongoose.connect(uri);
+    console.log('Connected to the database successfully');
+  } catch (error) {
+    console.error('Error connecting to the database:', error);
+    console.log('Could not connect to the database!');
+    process.exit(1);
+  }
+}
+
+module.exports = connectDB;
