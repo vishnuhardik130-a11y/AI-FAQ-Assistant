@@ -1,76 +1,66 @@
-# AI FAQ Assistant
+# AI FAQ Assistant - MVC Pattern
 
-A complete Flask + MongoDB web application for an AI-powered FAQ assistant.
+This project demonstrates a simple Model-View-Controller (MVC) architecture.
 
-## Main Features
-- User registration and login
-- User dashboard
-- AI FAQ chat interface
-- Local NLP FAQ matching using TF-IDF and cosine similarity
-- Category-based FAQ browsing
-- Chat history
-- Admin dashboard
-- Add, edit and delete FAQs
-- User and FAQ statistics
-- Responsive modern UI
-- MongoDB database
+## Architecture
 
-## Technology
-- Frontend: HTML5, CSS3, JavaScript
-- Backend: Python Flask
-- Database: MongoDB
-- AI/NLP: scikit-learn TF-IDF + cosine similarity
-- IDE: VS Code
+- **Model**: `models/` - MongoDB/Mongoose data models.
+- **View**: `views/` - HTML, CSS and browser JavaScript.
+- **Controller**: `controllers/` - application/business logic.
+- **Routes**: `routes/` - maps HTTP requests to controllers.
+- **Database**: `config/db.js` - MongoDB connection.
 
-## Quick Start
+Flow:
 
-### 1. Install Python
-Use Python 3.11+.
+Browser/View -> Routes -> Controller -> Model -> MongoDB
+                         |
+                         -> JSON response -> View
 
-### 2. Install MongoDB
-Start MongoDB locally on the default port 27017.
+## Folder Structure
 
-### 3. Create virtual environment
-```bash
-python -m venv venv
-```
+MVC_Pattern_AI_FAQ_Assistant/
+├── config/
+│   └── db.js
+├── controllers/
+│   └── faqController.js
+├── models/
+│   ├── Admin.js
+│   ├── FAQ.js
+│   └── User.js
+├── routes/
+│   └── faqRoutes.js
+├── views/
+│   ├── app.js
+│   ├── index.html
+│   └── style.css
+├── .env.example
+├── package.json
+├── README.md
+└── server.js
 
-Windows:
-```bash
-venv\Scripts\activate
-```
+## Run
 
-### 4. Install packages
-```bash
-pip install -r requirements.txt
-```
+1. Install Node.js and MongoDB.
+2. Open this folder in VS Code.
+3. Run `npm install`.
+4. Copy `.env.example` to `.env` if needed.
+5. Start MongoDB.
+6. Run `npm start`.
+7. Open `http://localhost:5000`.
 
-### 5. Configure environment
-Copy `.env.example` to `.env` and update the values if needed.
+## API
 
-### 6. Seed sample data
-```bash
-python seed.py
-```
+GET `/api/faqs` - list FAQs
 
-### 7. Run
-```bash
-python run.py
-```
+GET `/api/faqs/:id` - get one FAQ
 
-Open:
-http://127.0.0.1:5000
+POST `/api/faqs` - create FAQ
 
-## Default Admin
-Email: admin@aifaq.com
-Password: Admin@123
+Example JSON:
+{
+  "question": "What is MVC?",
+  "answer": "MVC separates the Model, View and Controller responsibilities.",
+  "category": "Architecture"
+}
 
-Change this password before real deployment.
-
-## Project Flow
-User -> Login/Register -> Dashboard -> Ask Question -> AI FAQ Engine -> MongoDB FAQ Knowledge Base -> Answer -> Chat History
-
-Admin -> Login -> Admin Dashboard -> Manage FAQs/Categories -> Analytics
-
-## Important
-The built-in AI engine works without a paid API. It uses TF-IDF and cosine similarity to match a user's question with stored FAQs. The architecture can later be connected to an external LLM provider through the optional provider layer.
+DELETE `/api/faqs/:id` - delete an FAQ
